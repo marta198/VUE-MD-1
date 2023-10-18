@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="header"  :class="{ 'alt-background': isAlternativeBackground }">
       <div class = "left">
         <img src="../assets/logo.svg" />
         <h1>{{ title }}</h1>
@@ -27,8 +27,7 @@
                 full_name: ""
             },
             buttonName: "Login",
-            bgColor: '#333',
-            altBgColor: '#28c495',
+            isAlternativeBackground: false
         }
     },
     methods: {
@@ -45,7 +44,7 @@
             this.$parent.showAvatar = false;
             this.$parent.showFullName = false;
             this.$parent.isLoggedIn = !this.$parent.isLoggedIn;
-            this.bgColor = this.altBgColor;
+            this.isAlternativeBackground = false;
           }
         } else {
           if (confirm("Do you want to log in") == true) {
@@ -56,7 +55,7 @@
             this.$parent.showAvatar = true;
             this.$parent.showFullName = true;
             this.$parent.isLoggedIn = !this.$parent.isLoggedIn;
-            this.bgColor = this.defaultBgColor;
+            this.isAlternativeBackground = true;
           }
         }
         this.$emit('user-logged-in');
@@ -106,8 +105,8 @@
       background-color: #333;
     }
 
-    .header.alt-bg {
-      background-color: #28c495;
+    .alt-background {
+      background-color: #8096ab;
     }
 
   </style>
